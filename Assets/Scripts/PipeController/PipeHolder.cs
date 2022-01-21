@@ -14,6 +14,16 @@ public class PipeHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //check null first
+        if (BirdController.instance != null)
+        {
+            //if flag == 1, means that bird collied with pipe/ground
+            // then died -> destroy PipeHolder
+            if (BirdController.instance.flag == 1)
+            {
+                Destroy(GetComponent<PipeHolder>());
+            }
+        }
         PipeMovement();
     }
 
