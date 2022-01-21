@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BirdController : MonoBehaviour
 {
-
     public static BirdController instance;
     public float bounceForce;
     private Rigidbody2D myBody;
@@ -17,6 +17,7 @@ public class BirdController : MonoBehaviour
     private bool didFlap;
     private GameObject spawner;
     public float flag = 0;
+    public int score = 0;
     private void Awake()
     {
         isAlive = true;
@@ -72,6 +73,11 @@ public class BirdController : MonoBehaviour
     {
         if (other.tag == "PipeHolder")
         {
+            score++;
+            if (GamePlayController.instance != null)
+            {
+                GamePlayController.instance.SetScore(score);
+            }
             audioSource.PlayOneShot(pingClip);
         }
     }
@@ -87,6 +93,11 @@ public class BirdController : MonoBehaviour
                 Destroy(spawner);
                 audioSource.PlayOneShot(diedClip);
                 anim.SetTrigger("Died");
+            }
+            if (GamePlayController.instance != null)
+            {
+                GamePlayController.instance.BirdDiedShowPanel(score);
+                GamePlayController.instance.PauseButtonController();
             }
         }
     }
