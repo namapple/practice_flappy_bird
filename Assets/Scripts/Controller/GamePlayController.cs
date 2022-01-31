@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +9,7 @@ public class GamePlayController : MonoBehaviour
     private Button instructionButton;
     [SerializeField]
     private Button pauseButtonController;
+    private Button controller;
     [SerializeField]
     private Text scoreText, endScoreText, bestScoreText;
     [SerializeField]

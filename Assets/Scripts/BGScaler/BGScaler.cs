@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BGScaler : MonoBehaviour
 {
+    
     private void Start()
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
